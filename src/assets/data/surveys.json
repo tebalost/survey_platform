@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Survey 1",
+    "total": 17,
+    "status": {
+      "takenSurvey": 24,
+      "notTaken": 64,
+      "failed": 17
+    }
+  },
+  {
+    "name": "Survey 2",
+    "total": 17,
+    "status": {
+      "takenSurvey": 34,
+      "notTaken": 74,
+      "failed": 7
+    }
+  },
+  {
+    "name": "Survey 3",
+    "total": 17,
+    "status": {
+      "failed": 23,
+      "taken": 60,
+      "notTake": 17
+    }
+  }
+]

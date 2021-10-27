@@ -1,0 +1,68 @@
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()"class="popup-card-width add-new-user">
+	<div>
+		<h2 mat-dialog-title>Edit Authority</h2>
+	</div>	
+	<div>
+		<div>
+			<mat-dialog-content>
+				<mat-form-field class="full-wid">
+					<label>Name</label>
+					<input matInput  formControlName="name" type="text">
+				</mat-form-field>
+
+				<mat-form-field class="full-wid">
+					<label>Authority Code</label>
+					<input matInput formControlName="code" type="text">
+				</mat-form-field>
+
+				<mat-form-field class="full-wid">
+					<label>Status</label>
+					<mat-select formControlName="status" class="form-control">
+						<mat-option value=""></mat-option>
+						<mat-option value="ACTIVE"  >Active</mat-option>
+						<mat-option value="ACTIVE">Disable</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field class="full-wid">
+					<mat-select formControlName="country" class="form-control"	placeholder="Country">
+						<mat-option value="" disabled selected hidden>Country</mat-option>
+						<mat-option value="country" *ngFor="let country of countries">{{country.country}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field class="full-wid">
+					<label>Location</label>
+					<input matInput formControlName="location" type="text">
+				</mat-form-field>
+
+				<mat-form-field class="full-wid">
+					<div class="form-group">
+						<input matInput type="text" formControlName="file" class="form-control" placeholder="Logo">
+						<input
+								formControlName="file"
+								id="file"
+								type="file"
+								class="form-control"
+								(change)="onFileChange($event)">
+						<div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+							<div *ngIf="f.file.errors.required">File is required.</div>
+						</div>
+					</div>
+				</mat-form-field>
+
+				<img [src]="imageSrc"  *ngIf="imageSrc" style="height: 30%; width:30%">
+
+
+			</mat-dialog-content>
+		</div>
+
+	</div>	
+	<div>
+		<mat-dialog-actions class="mrgn-b-xs pad-b-none" align="right">
+			<button mat-raised-button type="button" (click)="dialogRef.close()" color="primary">CANCEL</button>
+			<button mat-raised-button type="submit" color="warn">UPDATE</button>
+		</mat-dialog-actions>
+	</div>	
+</form>
+

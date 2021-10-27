@@ -1,0 +1,16 @@
+[
+   {
+      "authorityCode": "M1002",
+      "authorityName": "Joburg Gen",
+      "participantCount": 14,
+      "surveysCount": 6,
+      "adherenceCount": 2
+   },
+   {
+      "authorityCode": "M1004",
+      "authorityName": "ELONA private",
+      "participantCount": 50,
+      "surveysCount": 8,
+      "adherenceCount": 0
+   }
+]

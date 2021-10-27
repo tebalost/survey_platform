@@ -1,0 +1,73 @@
+<div class="user-manage-list" *ngIf="authoritieslist && authoritieslist.length>0">
+	<mat-card>
+		<div fxLayout="row wrap" fxLayoutAlign="space-between">
+			<h4>All Active Authorities</h4>
+
+		</div>
+		<mat-divider></mat-divider>
+		<div class="table-responsive">
+			<table class="full-wid" mat-table [dataSource]="dataSource">
+				<ng-container matColumnDef="select">
+					<th mat-header-cell *matHeaderCellDef>
+						<mat-checkbox (change)="$event ? masterToggle() : null"
+							[checked]="selection.hasValue() && isAllSelected()"
+							[indeterminate]="selection.hasValue() && !isAllSelected()">
+						</mat-checkbox>
+					</th>
+					<td mat-cell *matCellDef="let row">
+						<mat-checkbox (click)="$event.stopPropagation()"
+							(change)="$event ? selection.toggle(row) : null"
+							[checked]="selection.isSelected(row)">
+						</mat-checkbox>
+					</td>
+				</ng-container>
+				<ng-container matColumnDef="authorityCode">
+					<th mat-header-cell *matHeaderCellDef>AUTHORITY CODE</th>
+					<td mat-cell *matCellDef="let element">
+						<div fxLayoutAlign="start center">
+
+							<div>
+								<h5 class="mrgn-b-xs">{{element.authorityCode}}</h5>
+							</div>
+						</div>
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="authorityName">
+					<th mat-header-cell *matHeaderCellDef>AUTHORITY NAME</th>
+					<td mat-cell *matCellDef="let element"><div class="make-ellipse">{{element.authorityName}} </div></td>
+				</ng-container>
+
+				<ng-container matColumnDef="participants">
+					<th mat-header-cell *matHeaderCellDef>PARTICIPANTS</th>
+					<td mat-cell *matCellDef="let element">
+						<div fxLayoutAlign="start start">
+							<div class="status-text">
+								<div class="mat-text-muted">{{element.participantCount}}</div>
+							</div>
+						</div>
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="action">
+					<th mat-header-cell *matHeaderCellDef>ACTION</th>
+					<td mat-cell *matCellDef="let element;let i = index;">
+						<button mat-icon-button>
+							<a [routerLink]="['/participantlist', element.authorityCode]" routerLinkActive="active"><mat-icon class="mat-icon-grey gene-text-lg">remove_red_eye</mat-icon></a>
+						</button>
+					</td>
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns"
+					(click)="selection.toggle(row)"></tr>
+			</table>
+		</div>
+		<div class="pagination">
+			<mat-paginator [length]="authoritieslist.length"
+			  [pageSize]="10"
+			  [pageSizeOptions]="[5, 10, 25, 100]">
+			</mat-paginator>
+		</div>
+	</mat-card>
+</div>

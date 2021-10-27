@@ -1,0 +1,16 @@
+[
+  {
+    "msisdn": "27737767765",
+    "status": "Active",
+    "surveyCount": 14,
+    "adherenceCount": 10,
+    "authorityCode": "M001"
+  },
+  {
+    "msisdn": "27837747118",
+    "status": "Active",
+    "surveyCount": 9,
+    "adherenceCount": 0,
+    "authorityCode": "M001"
+  }
+]

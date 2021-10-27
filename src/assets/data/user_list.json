@@ -1,0 +1,38 @@
+[
+   {
+      "authorityCode": "AUT1",
+      "businessUserId": 0,
+      "email": "st@gmail.com",
+      "firstName": "Simon",
+      "lastName": "Thabang",
+      "role": "ADMIN",
+      "userStatus": "ACTIVE"
+   },
+   {
+      "authorityCode": "AUT1",
+      "businessUserId": 0,
+      "email": "mtop@gmail.com",
+      "firstName": "Mothamo",
+      "lastName": "Selikane",
+      "role": "ADMIN",
+      "userStatus": "ACTIVE"
+   },
+   {
+      "authorityCode": "AUT1",
+      "businessUserId": 0,
+      "email": "mpho@live.com",
+      "firstName": "Mpho",
+      "lastName": "Tabane",
+      "role": "NORMAL_USER",
+      "userStatus": "ACTIVE"
+   },
+   {
+      "authorityCode": "AUT2",
+      "businessUserId": 0,
+      "email": "st@gmail.com",
+      "firstName": "Simon",
+      "lastName": "Thabang",
+      "role": "SUPER_ADMIN",
+      "userStatus": "ACTIVE"
+   }
+]

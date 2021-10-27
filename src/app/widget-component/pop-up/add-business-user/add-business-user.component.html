@@ -1,0 +1,89 @@
+<form [formGroup]="addBusinessUserForm" class="popup-card-width add-new-user">
+	<div>
+		<h2 mat-dialog-title>Add Business User</h2>
+	</div>	
+	<mat-dialog-content>
+		<div>
+			<div>
+				<mat-form-field class="mrgn-b-sm">
+					<input matInput type="text" formControlName="firstName" class="form-control" placeholder="First Name">
+					<mat-error *ngIf="addBusinessUserForm.controls['firstName'].touched && !addBusinessUserForm.controls['firstName'].valid">
+						<mat-error *ngIf="addBusinessUserForm.controls['firstName'].hasError('required')" class="required alert-error">
+							You must include a First Name.
+						</mat-error>
+		         </mat-error>
+				</mat-form-field>
+				<input type="text" formControlName="businessUserId" style="display: none;" />
+				<input type="text" formControlName="userStatus" style="display: none;" />
+				<mat-form-field class="mrgn-b-sm">
+					<input matInput type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+					<mat-error *ngIf="addBusinessUserForm.controls['lastName'].touched && !addBusinessUserForm.controls['lastName'].valid">
+						<mat-error *ngIf="addBusinessUserForm.controls['lastName'].hasError('required')" class="required alert-error">
+			         	You must include a Last Name.
+                  </mat-error>  
+               </mat-error>
+				</mat-form-field>
+            <mat-form-field class="mrgn-b-sm">
+               <input matInput type="text" formControlName="email" class="form-control" placeholder="Email">
+               <mat-error *ngIf="addBusinessUserForm.controls['email'].touched && !addBusinessUserForm.controls['email'].valid">
+                  <mat-error *ngIf="addBusinessUserForm.controls['email'].hasError('required')" class="required alert-error">
+                        You must include a E-mail Address.
+                  </mat-error>  
+                  <mat-error *ngIf="addBusinessUserForm.controls['email'].hasError('pattern')">
+                     E-mail must be valid
+                  </mat-error>
+               </mat-error>
+            </mat-form-field>
+
+				<mat-form-field>
+					<select matNativeControl formControlName="authorityCode" placeholder="Authority">
+						<option *ngFor="let authority of authorities" value="{{authority.code}}">{{authority.name}}</option>
+					</select>
+					<mat-error *ngIf="addBusinessUserForm.controls['authorityCode'].touched && !addBusinessUserForm.controls['authorityCode'].valid">
+						<mat-error *ngIf="addBusinessUserForm.controls['authorityCode'].hasError('required')" class="required alert-error">
+							You must Select the user authority.
+						</mat-error>
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field>
+               <select matNativeControl formControlName="role" placeholder="Role">
+                  <option value="SUPER_ADMIN">Super Admim</option>
+						<option value="ADMIN">Admin</option>
+						<option value="NORMAL_USER">Normal-User</option>
+					</select>	
+					<mat-error *ngIf="addBusinessUserForm.controls['role'].touched && !addBusinessUserForm.controls['role'].valid">
+						<mat-error *ngIf="addBusinessUserForm.controls['role'].hasError('required')" class="required alert-error">
+                     You must Select a user role.
+                  </mat-error>  
+               </mat-error>
+				</mat-form-field>
+
+
+				<mat-form-field class="full-wid">
+					<div class="form-group">
+						<input matInput type="text" formControlName="file" class="form-control" placeholder="Profile Picture">
+						<input
+								formControlName="file"
+								id="file"
+								type="file"
+								accept="image/*"
+								class="form-control"
+								(change)="onFileChange($event)">
+						<div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+							<div *ngIf="f.file.errors.required">File is required.</div>
+						</div>
+					</div>
+				</mat-form-field>
+				<img [src]="imageSrc" *ngIf="imageSrc" style="height: 30%; width:30%">
+
+
+
+			</div>
+      </div>
+	</mat-dialog-content>
+	<mat-dialog-actions class="mrgn-b-xs pad-b-none">
+		<button type="button" mat-raised-button (click)="dialogRef.close()" color="primary">CLOSE</button>
+		<button (click)="onFormSubmit()" type="submit" [disabled]="!addBusinessUserForm.valid" mat-raised-button color="warn">SUBMIT</button>
+	</mat-dialog-actions>
+</form>
